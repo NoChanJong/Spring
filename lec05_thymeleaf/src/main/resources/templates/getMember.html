@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:align="center">
+		<h1>정보 상세보기</h1>
+		<form th:action="@{updateMember}" method="post">
+			<input type="hidden" name="id" th:value="${member.id}" />
+			<table th:align="center" border="1" th:cellpadding="0" th:cellspacing="0">
+				<tr>
+					<td bgcolor="black" width="100" style="color: white" th:text="아이디"></td>
+					<td bgcolor="lightgray" style="color: white" th:text="${member.id}"></td>
+				</tr>
+				<tr>
+					<td bgcolor="black" width="100" style="color: white" th:text="비밀번호"></td>
+					<td><input type="text" name="password" th:value="${member.password}"/></td>
+				</tr>
+				<tr>
+					<td bgcolor="black" width="100" style="color: white" th:text="이름"></td>
+					<td bgcolor="lightgray" style="color: white" th:text="${member.name}"></td>
+				</tr>
+				<tr>
+					<td bgcolor="black" width="100" style="color: white" th:text="직책"></td>
+					<td>
+						<select>
+							<option value="member.role">ADMIN</option>
+							<option value="member.role">USER</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value="정보 수정하기" /></td>
+				</tr>
+			</table>
+		</form>
+		<a th:href="@{/insertMember}">멤버 등록</a>&nbsp;&nbsp;&nbsp;
+		<a th:href="@{/deleteMember(id=${member.id})}">멤버 삭제</a>&nbsp;&nbsp;&nbsp;
+		<a th:href="@{/getMemberList}">멤버 목록</a>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
