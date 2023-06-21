@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Blog Maker</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <!-- Boot Strap -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <a class="navbar-brand text-white" href="/">BLOG MAKER</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav font-weight-bold">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    카테고리
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item text-white" href="getBlogList">자유 게시판</a>
+                    <a class="dropdown-item text-white" href="getBlogList">운동 팁</a>
+                    <a class="dropdown-item text-white" href="getBlogList">.....</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="logout">로그아웃</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1"><font class="bg bg-danger" th:text="|${session['member'].name}(${session.member.id})|"></font>님 블로그에 오신걸 환영합니다!!</h1>
+                        </header>
+                        <!-- Post content-->
+                        <h2 th:text="${ blog.title }">dd</h2>
+                        <p th:text="${ blog.content }">dd</p>
+                    </article>
+                </div>
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    <!-- Search widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Create Date</div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="createDate" th:value="${#dates.format(blog.createDate, 'yyyy-MM-dd')}" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Side widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">조회수</div>
+                        <input class="form-control" type="text" name="cnt" th:value="${ blog.cnt }" />
+                    </div>
+                </div>
+            </div>
+        </div>
+		<footer class="py-5 bg-dark">
+            <div class="container">
+            	<a th:href="@{/updateBlogView(seq=${blog.seq})}" class="btn btn-light mt-3">게시글수정</a>
+				<a th:href="@{/insertBlog}" class="btn btn-light mt-3">게시글등록</a>
+				<a th:href="@{/deleteBlog(seq=${blog.seq})}" class="btn btn-light mt-3" >게시글삭제</a>
+				<a th:href="@{getBlogList}" class="btn btn-light mt-3">게시글목록</a>	
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

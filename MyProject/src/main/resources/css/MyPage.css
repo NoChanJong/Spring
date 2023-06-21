@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+.navbar {
+  background-color: #343a40;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.navbar-toggler-icon {
+  background-color: #fff;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+/* Main Container */
+.container {
+  margin-top: 100px;
+}
+
+.bg-success {
+  background-color: #28a745;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.rounded {
+  border-radius: 10px;
+}
+
+
+.btn-dark {
+  background-color: #343a40;
+  color: #fff;
+  border-color: #343a40;
+}
+
+.btn-dark:hover {
+  background-color: #23272b;
+  border-color: #23272b;
+}
+
+
+@media (max-width: 576px) {
+  .container {
+    margin-top: 50px;
+  }
+}
